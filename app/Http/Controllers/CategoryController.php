@@ -12,7 +12,7 @@ class CategoryController extends Controller
         // echo "hello";
         $response = Http::acceptJson()->get('http://localhost:4000/api/category?page=1&pageSize=10');
         $response = $response->json();
-        return prx($response['data']);
+        return prx($response);
     }
 
     public function addCategory()

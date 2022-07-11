@@ -16,5 +16,8 @@ use App\Http\Controllers\CategoryController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/categories', [CategoryController::class, 'getAllCategories'])->name('category.getAllCategories');
-Route::get('/category', [CategoryController::class, 'addCategory'])->name('category.addCategory');
+// Route::get('/categories', [CategoryController::class, 'getAllCategories'])->name('category.getAllCategories');
+// Route::get('/category/add', [CategoryController::class, 'addCategory'])->name('category.addCategory');
+
+Route::get('/scope', 'App\Http\Controllers\ScopeController@index')->name('scope.index');
+Route::post('/scope/add', 'App\Http\Controllers\ScopeController@store')->name('scope.create');
