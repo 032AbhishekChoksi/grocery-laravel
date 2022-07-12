@@ -20,4 +20,7 @@ Route::get('/', function () {
 // Route::get('/category/add', [CategoryController::class, 'addCategory'])->name('category.addCategory');
 
 Route::get('/scope', 'App\Http\Controllers\ScopeController@index')->name('scope.index');
-Route::post('/scope/add', 'App\Http\Controllers\ScopeController@store')->name('scope.create');
+Route::get('/scope/add', 'App\Http\Controllers\ScopeController@add')->name('scope.add');
+Route::post('/scope/add', 'App\Http\Controllers\ScopeController@store')->name('scope.store');
+Route::get('/scope/edit/{id}', 'App\Http\Controllers\ScopeController@edit')->name('scope.edit');
+Route::post('/scope/edit/{id}', 'App\Http\Controllers\ScopeController@update')->name('scope.update');

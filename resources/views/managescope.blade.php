@@ -1,4 +1,3 @@
-{{-- {{ prx($data['scope']) }} --}}
 <!doctype html>
 <html lang="en">
 
@@ -7,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Scope</title>
+    <title>Manage Scope</title>
+
     <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
@@ -1983,54 +1983,82 @@
 
                         </div>
                     </div>
-                    <div class=" mb-3 card">
+                    <div class="row">
+                        <div class=" mb-3 card">
+                            <div style="padding:20px;">
+                                <h2>
+                                    <div
+                                        style="align-items: initial;position: relative;display: flex;flex-wrap: wrap;justify-content: space-between;padding-top:5px;padding-left: 5px;">
+                                        <h5 class="card-title">Scope</h5>
+                                        <a class="btn" style="padding:0 ;" data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                            aria-controls="flush-collapseOne">
+                                            <button type="button" data-toggle="tooltip" title=""
+                                                data-placement="bottom" class="btn-shadow mr-3 btn btn-dark"
+                                                data-original-title="Example Tooltip">
+                                                <i class="pe-7s-back" style="font-style: bold;font-size: 16px;"></i>
+                                            </button>
+                                        </a>
+                                    </div>
 
-                        <div class="card-body">
-                            <table style="width: 100%;" id="example"
-                                class="table table-hover table-striped table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>NO.</th>
-                                        <th>Scope</th>
-                                        <th>Options</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @php
-                                        $i = 1;
-                                    @endphp
-                                    @forelse ($data['scope'] as $scope)
-                                        {{-- {{ pr($scope['name']) }} --}}
-                                        <tr>
-                                            <td>{{ $i }}</td>
-                                            <td>{{ $scope['name'] }}</td>
-                                            <td>
-                                                <center>
-                                                    <i class="fa fa-trash" style="margin-right:10px;"></i>
-                                                    <a href="{{ route('scope.edit', ['id' => $scope['_id']]) }}">
-                                                        <i class="fa fa-edit"></i>
+                                </h2>
+                                {{-- <div> --}}
+                                <div class="row">
+                                    {{-- <div class="col-lg-2"></div> --}}
+                                    <div class="col-lg-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <!-- <h5 class="card-title">Scope Form</h5> -->
+                                                <div
+                                                    style="align-items: initial;position: relative;display: flex;flex-wrap: wrap;justify-content: space-between;">
+                                                    <h5 class="card-title">
+                                                        {{ isset($title) ? $title : 'Edit Scope' }}
+                                                    </h5>
+                                                    <a class="btn" style="padding:0 ;"
+                                                        data-bs-toggle="collapse"
+                                                        data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                                        aria-controls="flush-collapseOne">
+                                                        <h5 class="card-title"><i class="fa-solid fa-xmark"></i>
+                                                        </h5>
                                                     </a>
-                                                </center>
-                                            </td>
-                                        </tr>
-                                        @php
-                                            $i++;
-                                        @endphp
-                                    @empty
-                                        <tr class="text-center warning">
-                                            <td colspan="3">No Record Found</td>
-                                        </tr>
-                                    @endforelse
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Scope</th>
-                                        <th>Oprations</th>
+                                                </div>
 
-                                    </tr>
-                                </tfoot>
-                            </table>
+                                                <!-- Scope Form -->
+                                                <form class="row g-3"
+                                                    action="{{ isset($title) ? route('scope.add') : route('scope.edit', ['id' => $editdata['scope']['_id']]) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    <div class="col-12">
+                                                        <!-- <label for="inputNanme4" class="form-label">Scope Name</label> -->
+                                                        <input type="text" class="form-control" name="name"
+                                                            id="txtScopename" placeholder="Enter Scope Name"
+                                                            value="{{ old('name', isset($editdata['scope']['name']) ? $editdata['scope']['name'] : '') }}"
+                                                            required>
+                                                        <span style="color: red;margin-top: 5px;">
+                                                            @error('name')
+                                                                {{ $message }}
+                                                            @enderror
+                                                        </span>
+                                                    </div>
+
+                                                    <div class="text-center">
+                                                        <button type="submit"
+                                                            class="btn btn-primary">Submit</button>
+                                                        <button type="reset"
+                                                            class="btn btn-secondary">Reset</button>
+                                                    </div>
+                                                </form>
+                                                <!-- Scope Form -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- <div class="col-lg-2"></div> --}}
+                                </div>
+                                {{-- </div> --}}
+
+                            </div>
+
                         </div>
                     </div>
                 </div>
